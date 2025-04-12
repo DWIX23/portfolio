@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react'; // you can install with: npm install lucide-react
 import useDarkMode from '../hooks/useDarkMode';
+import { Moon, Sun } from 'lucide-react';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,16 +18,25 @@ function Header() {
           <li><a href="#projects" className="hover:text-blue-600 dark:hover:text-blue-400">Projects</a></li>
           <li><a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400">Contacts</a></li>
           <li>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="w-10 h-5 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full px-1"
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
+            className={ `relative w-14 h-7 flex items-center rounded-full px-1 transition-colors duration-300 
+                ${darkMode ? 'ring-2 ring-blue-400 ring-offset-2 ring-offset-gray-900' : ''}
+                ${darkMode ? 'bg-gray-600' : 'bg-gray-300'}`}
             >
-              <div
-                className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${
-                  darkMode ? 'translate-x-5' : ''
-                }`}
-              ></div>
+            <span className="absolute left-1 text-xs text-yellow-400">
+                <Sun className="w-3 h-3" />
+            </span>
+            <span className="absolute right-1 text-xs text-white">
+                <Moon className="w-3 h-3" />
+            </span>
+            <div
+                className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out
+                ${darkMode ? 'translate-x-7' : 'translate-x-0'}`}
+            />
             </button>
+
           </li>
         </ul>
 
@@ -58,15 +68,23 @@ function Header() {
             <li className="mt-4">
               <span className="block mb-1 text-sm">Dark Mode</span>
               <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="w-10 h-5 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full px-1"
-              >
-                <div
-                  className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${
-                    darkMode ? 'translate-x-5' : ''
-                  }`}
-                ></div>
-              </button>
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
+            className={ `relative w-14 h-7 flex items-center rounded-full px-1 transition-colors duration-300 
+                ${darkMode ? 'ring-2 ring-blue-400 ring-offset-2 ring-offset-gray-900' : ''}
+                ${darkMode ? 'bg-gray-600' : 'bg-gray-300'}`}
+            >
+            <span className="absolute left-1 text-xs text-yellow-400">
+                <Sun className="w-3 h-3" />
+            </span>
+            <span className="absolute right-1 text-xs text-white">
+                <Moon className="w-3 h-3" />
+            </span>
+            <div
+                className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out
+                ${darkMode ? 'translate-x-7' : 'translate-x-0'}`}
+            />
+            </button>
             </li>
           </ul>
         </div>

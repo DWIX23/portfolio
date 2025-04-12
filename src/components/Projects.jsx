@@ -8,12 +8,21 @@ const projects = [
   function Projects() {
     return (
       <section id="projects" className="container mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold mb-6">Projects</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+          Projects
+        </h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <div key={index} className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p>{project.description}</p>
+            <div
+              key={index}
+              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition"
+            >
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
+                {project.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                {project.description}
+              </p>
             </div>
           ))}
         </div>
