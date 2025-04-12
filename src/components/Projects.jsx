@@ -1,6 +1,8 @@
 const projects = [
     { title: "Portfolio Website", description: "Built with React + Tailwind." },
     { title: "Todo App", description: "Simple app using useState and localStorage." },
+    { title: "Online Medical and Dental Information System", description: "Built with Vanilla PHP, MySQL, and Tailwind." },
+    { title: "College of Science Accreditation Website", description: "Built with React + Tailwind." },
   ];
   
   function Projects() {
