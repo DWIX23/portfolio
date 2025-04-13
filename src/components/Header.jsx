@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Briefcase, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import useDarkMode from '../hooks/useDarkMode';
+import { FaGithub, FaLinkedin, FaBriefcase } from 'react-icons/fa';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +28,7 @@ function Header() {
         {/* Desktop menu */}
         <ul className="hidden md:flex gap-6 items-center transition-colors duration-0 delay-0">
           <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">About</a></li>
+          <li><a href="#skills" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">Skills</a></li>
           <li><a href="#projects" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">Projects</a></li>
           <li><a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">Contacts</a></li>
           <li>
@@ -94,19 +96,19 @@ function Header() {
           </ul>
 
           {/* Drawer Footer Links */}
-          <footer className="mt-8 border-t pt-4 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-0 delay-0">
+          <footer className="mt-8 border-t pt-4 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300 ease-in-out delay-0">
             <div className="flex flex-col gap-3 transition-colors duration-0 delay-0">
-            <p className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">
-                <Linkedin size={16} />
+            <p className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
+              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">
+                <FaLinkedin size={16} />
                 LinkedIn
               </a>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">
-                <Github size={16} />
+              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">
+                <FaGithub size={16} />
                 GitHub
               </a>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">
-                <Briefcase size={16} />
+              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">
+                <FaBriefcase size={16} />
                 Indeed
               </a>
             </div>
