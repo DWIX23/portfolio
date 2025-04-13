@@ -2,9 +2,9 @@ import { Github, Linkedin, Briefcase } from 'lucide-react';
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white text-center py-6">
+    <footer className="container mx-auto flex flex-col bg-gray-800 text-white text-center py-6">
       <p>&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
-      <div className="mt-4 flex justify-center items-center gap-4">
+      <div className="mt-4 flex justify-center items-center gap-4 md:grid-cols-3">
         <a
           href="" // replace with your actual URL
           target="_blank"
