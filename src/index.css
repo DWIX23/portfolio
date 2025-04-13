@@ -14,7 +14,20 @@ body.menu-open {
   overflow: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
+html {
+  scroll-padding-top: 80px; /* Adjust this to your header height */
+}
+
+
+@layer base {
+  html {
+    scroll-padding-top: 80px;
+  }
+}
 
 
 /* :root {

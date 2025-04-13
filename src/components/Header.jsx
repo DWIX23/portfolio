@@ -7,7 +7,50 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useDarkMode();
 
-  // Lock scroll when mobile menu is open
+  const smoothScrollTo = (target, duration = 800, offset = 80) => {
+    const start = window.scrollY;
+    const end = target.getBoundingClientRect().top + window.scrollY - offset;
+    const distance = end - start;
+    const startTime = performance.now();
+
+    const easeInOutQuad = (t) => t < 0.5
+      ? 2 * t * t
+      : -1 + (4 - 2 * t) * t;
+
+    function animateScroll(currentTime) {
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeInOutQuad(progress);
+      window.scrollTo(0, start + distance * ease);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animateScroll);
+      }
+    }
+
+    requestAnimationFrame(animateScroll);
+  };
+
+  const handleMobileLinkClick = (sectionId) => (e) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+
+    setTimeout(() => {
+      const section = document.querySelector(sectionId);
+      if (section) {
+        smoothScrollTo(section);
+      }
+    }, 300);
+  };
+
+  const handleDesktopLinkClick = (sectionId) => (e) => {
+    e.preventDefault();
+    const section = document.querySelector(sectionId);
+    if (section) {
+      smoothScrollTo(section);
+    }
+  };
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('menu-open');
@@ -26,11 +69,11 @@ function Header() {
         <h1 className="text-xl font-bold">Darwin's Portfolio</h1>
 
         {/* Desktop menu */}
-        <ul className="hidden md:flex gap-6 items-center transition-colors duration-0 delay-0">
-          <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">About</a></li>
-          <li><a href="#skills" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">Skills</a></li>
-          <li><a href="#projects" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">Projects</a></li>
-          <li><a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0">Contacts</a></li>
+        <ul className="hidden md:flex gap-6 items-center">
+          <li><a href="#about" onClick={handleDesktopLinkClick('#about')} className="hover:text-blue-600 dark:hover:text-blue-400">About</a></li>
+          <li><a href="#skills" onClick={handleDesktopLinkClick('#skills')} className="hover:text-blue-600 dark:hover:text-blue-400">Skills</a></li>
+          <li><a href="#projects" onClick={handleDesktopLinkClick('#projects')} className="hover:text-blue-600 dark:hover:text-blue-400">Projects</a></li>
+          <li><a href="#contact" onClick={handleDesktopLinkClick('#contact')} className="hover:text-blue-600 dark:hover:text-blue-400">Contacts</a></li>
           <li>
             <button
               onClick={() => setDarkMode(!darkMode)}
@@ -71,11 +114,11 @@ function Header() {
             </button>
           </div>
 
-          {/* Mobile Nav Links */}
-          <ul className="flex flex-col gap-6 flex-grow transition-colors duration-0 delay-0">
-            <li><a href="#about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0" onClick={() => setIsMenuOpen(false)}>About</a></li>
-            <li><a href="#projects" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
-            <li><a href="#contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 delay-0" onClick={() => setIsMenuOpen(false)}>Contacts</a></li>
+          <ul className="flex flex-col gap-6 flex-grow">
+            <li><a href="#about" onClick={handleMobileLinkClick('#about')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">About</a></li>
+            <li><a href="#skills" onClick={handleMobileLinkClick('#skills')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Skills</a></li>
+            <li><a href="#projects" onClick={handleMobileLinkClick('#projects')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Projects</a></li>
+            <li><a href="#contact" onClick={handleMobileLinkClick('#contact')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Contacts</a></li>
             <li className="mt-4">
               <span className="block mb-1 text-sm">Dark Mode</span>
               <button
@@ -97,19 +140,16 @@ function Header() {
 
           {/* Drawer Footer Links */}
           <footer className="mt-8 border-t pt-4 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300 ease-in-out delay-0">
-            <div className="flex flex-col gap-3 transition-colors duration-0 delay-0">
-            <p className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">
-                <FaLinkedin size={16} />
-                LinkedIn
+            <div className="flex flex-col gap-3">
+              <p className="flex items-center gap-1">&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
+              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+                <FaLinkedin size={16} /> LinkedIn
               </a>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">
-                <FaGithub size={16} />
-                GitHub
+              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+                <FaGithub size={16} /> GitHub
               </a>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 delay-0">
-                <FaBriefcase size={16} />
-                Indeed
+              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+                <FaBriefcase size={16} /> Indeed
               </a>
             </div>
           </footer>

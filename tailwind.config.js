@@ -48,8 +48,17 @@ export default {
           },
         },
       },
+      scrollBehavior: ['smooth', 'responsive'],
+    },
+    variants: {
+      extend: {
+        scrollBehavior: ['smooth', 'responsive'],
+      },
     },
   },
   plugins: [],
+  corePlugins: {
+    scrollBehavior: true,
+  }
 };
 

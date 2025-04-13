@@ -13,7 +13,7 @@ const skills = [
 
 function Skills() {
   return (
-    <section id="skills" className="container mx-auto py-16 px-6">
+    <section id="skills" className="container mx-auto py-16 px-6 scroll-mt-20">
       <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white">
         Languages, Frameworks & Tools
       </h2>
