@@ -3,38 +3,43 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import tipaImg from "../images/tipa.png";
+import sagipImg from "../images/sagip.png";
+import cossbImg from "../images/cossb.png";
+import sroImg from "../images/sro.png"
+import dgImg from "../images/dg.jpg"
 
 const orgs = [
   {
-    logo: "/images/tipa.png",
+    logo: tipaImg,
     title: "Technology Innovators through Programming and Algorithm Sciences (TIPA)",
     position: "4th Year Representative",
     description:
       "Student organization dedicated to fostering innovation and excellence in computer science and programming. TIPA provides a collaborative platform for students to engage in algorithmic problem-solving, coding challenges, and the development of software solutions. Through workshops, hackathons, and collaborative projects, members enhance their technical skills, explore emerging technologies, and contribute to the advancement of computational sciences. TIPA serves as a catalyst for aspiring technologists to transform ideas into impactful digital innovations.",
   },
   {
-    logo: "./src/images/sagip.png",
+    logo: sagipImg,
     title: "Student Advocates for Genial Initiatives in Protection of Animals (SAGIP)",
     position: "Animal Monitoring and Feeding Committee",
     description:
       "Student-led organization at the University of Rizal System-Morong (URSM) dedicated to promoting animal welfare and responsible pet ownership within the campus and the broader community. SAGIP focuses on initiatives such as ensuring the well-being and identification of campus animals, making them safer and more recognized members of the community. Through educational campaigns, community outreach, and collaborative projects, SAGIP fosters compassion and awareness, encouraging students to take an active role in protecting and advocating for animals.​",
   },
   {
-    logo: "./src/images/dg.jpg",
+    logo: dgImg,
     title: "Digital Giants Esports (DG)",
     position: "Member",
     description:
       "The official esports organization of the University of Rizal System, bringing together students who share a passion for competitive gaming, digital media, and online community building. The organization promotes teamwork, strategic thinking, and sportsmanship through organized tournaments, scrimmages, campus-wide and university-wide gaming events. Digital Giants Esports also serves as a platform for student gamers to showcase their skills, connect with fellow enthusiasts, and represent the school in local and national esports competitions.",
   },
   {
-    logo: "./src/images/cossb.png",
+    logo: cossbImg,
     title: "College of Science Student Body (COSSB)",
     position: "Member",
     description:
       "Dynamic and service-oriented group that represents the collective interests of students within the College of Science. It serves as a bridge between the student body and the college administration, organizing academic, social, and outreach activities to enrich student life. The organization promotes leadership, unity, and academic excellence while ensuring that student voices are heard and their concerns addressed through various initiatives and events.",
   },
   {
-    logo: "./src/images/sro.png",
+    logo: sroImg,
     title: "Student Resercher's Organization (SRO)",
     position: "Member",
     description:
