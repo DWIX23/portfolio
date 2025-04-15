@@ -29,6 +29,105 @@ html {
   }
 }
 
+/* Base slide styles: Slight blur and opacity */
+.slick-slide {
+  opacity: 1;
+  transform: scale(0.95);
+  filter: blur(0);
+  transition: all 0.4s ease;
+}
+
+/* Active card styles: Clear and slightly scaled up */
+.slick-center .org-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(0px);
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+  filter: blur(0px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+/* Remove blur for all but the active card */
+.slick-slide:not(.slick-center) .org-card {
+  filter: blur(3px);
+  opacity: 0.5;
+}
+
+/* Center dot navigation styles */
+.custom-dots {
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-dots ul {
+  display: flex;
+  padding: 0;
+}
+
+.custom-dots li {
+  list-style: none;
+}
+
+.dot-pill {
+  width: 28px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #cbd5e1; /* slate-300 */
+  transition: background-color 0.3s ease;
+}
+
+.slick-dots li.slick-active .dot-pill {
+  background-color: #14b8a6; /* teal-500 */
+}
+
+/* Section styling: Remove extra top/bottom padding/margins */
+#organization {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0; /* Adjusted padding */
+  padding-bottom: 0; /* Adjusted padding */
+}
+
+/* Custom Arrow Styling */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Slight dark background */
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 20;
+  transition: background 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.custom-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.left-arrow {
+  left: 5%; /* Position the left arrow closer to the left side */
+}
+
+.right-arrow {
+  right: 5%; /* Position the right arrow closer to the right side */
+}
+
+/* Ensuring arrows are above cards */
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+/* Disable custom arrows */
+.custom-arrow {
+  display: none !important; /* Hide custom arrows */
+}
+
 
 
 /* :root {

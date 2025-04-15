@@ -20,7 +20,7 @@ function Tech_stack() {
   });
 
   return (
-    <section id="tech_stack" className="container mx-auto py-16 px-6 scroll-mt-20">
+    <section id="tech_stack" className="container mx-auto py-20 px-6 scroll-mt-20">
       <h2
         ref={titleRef}
         className={`text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white transition-all duration-700 ease-in-out transform ${

@@ -10,11 +10,11 @@ function About() {
     <section
       id="about"
       ref={ref}
-      className={`container mx-auto py-20 px-4 sm:px-8 max-w-4xl scroll-mt-20 transform transition-all duration-700 ${
+      className={`container mx-auto py-20 px-4 sm:px-8 max-w-4xl scroll-mt-24 transform transition-all duration-700 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-6">
         About Me
       </h2>
       <p className="text-lg sm:text-xl leading-relaxed text-gray-700 dark:text-gray-300">

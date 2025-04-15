@@ -7,7 +7,7 @@ function Contact() {
   });
 
     return (
-      <section id="contact" ref={ref} className={`container mx-auto py-16 px-4 scroll-mt-20 transform transition-all duration-700 ${
+      <section id="contact" ref={ref} className={`container mx-auto py-20 px-4 scroll-mt-20 transform transition-all duration-700 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}>
         <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
