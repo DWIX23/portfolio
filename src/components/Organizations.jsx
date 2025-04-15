@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const orgs = [
   {
-    logo: "./src/images/tipa.png",
+    logo: "/images/tipa.png",
     title: "Technology Innovators through Programming and Algorithm Sciences (TIPA)",
     position: "4th Year Representative",
     description:
