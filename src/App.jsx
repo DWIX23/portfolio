@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import Tech_stack from './components/Tech_stack'; 
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <About />
       <Skills />
+      <Tech_stack />
       <Projects />
       <Contact />
       <Footer />

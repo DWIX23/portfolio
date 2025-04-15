@@ -19,13 +19,13 @@ html {
 }
 
 html {
-  scroll-padding-top: 80px; /* Adjust this to your header height */
+  scroll-padding-top: 40px; /* Adjust this to your header height */
 }
 
 
 @layer base {
   html {
-    scroll-padding-top: 80px;
+    scroll-padding-top: 40px;
   }
 }
 
