@@ -4,37 +4,41 @@ import { useEffect, useState, useRef } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 const orgs = [
   {
     logo: "./src/images/tipa.png",
     title: "Technology Innovators through Programming and Algorithm Sciences (TIPA)",
     position: "4th Year Representative",
-    description: "Student organization dedicated to fostering innovation and excellence in computer science and programming. TIPA provides a collaborative platform for students to engage in algorithmic problem-solving, coding challenges, and the development of software solutions. Through workshops, hackathons, and collaborative projects, members enhance their technical skills, explore emerging technologies, and contribute to the advancement of computational sciences. TIPA serves as a catalyst for aspiring technologists to transform ideas into impactful digital innovations.",
+    description:
+      "Student organization dedicated to fostering innovation and excellence in computer science and programming. TIPA provides a collaborative platform for students to engage in algorithmic problem-solving, coding challenges, and the development of software solutions. Through workshops, hackathons, and collaborative projects, members enhance their technical skills, explore emerging technologies, and contribute to the advancement of computational sciences. TIPA serves as a catalyst for aspiring technologists to transform ideas into impactful digital innovations.",
   },
   {
     logo: "./src/images/sagip.png",
     title: "Student Advocates for Genial Initiatives in Protection of Animals (SAGIP)",
     position: "Animal Monitoring and Feeding Committee",
-    description: "Student-led organization at the University of Rizal System-Morong (URSM) dedicated to promoting animal welfare and responsible pet ownership within the campus and the broader community. SAGIP focuses on initiatives such as ensuring the well-being and identification of campus animals, making them safer and more recognized members of the community. Through educational campaigns, community outreach, and collaborative projects, SAGIP fosters compassion and awareness, encouraging students to take an active role in protecting and advocating for animals.​",
+    description:
+      "Student-led organization at the University of Rizal System-Morong (URSM) dedicated to promoting animal welfare and responsible pet ownership within the campus and the broader community. SAGIP focuses on initiatives such as ensuring the well-being and identification of campus animals, making them safer and more recognized members of the community. Through educational campaigns, community outreach, and collaborative projects, SAGIP fosters compassion and awareness, encouraging students to take an active role in protecting and advocating for animals.​",
   },
   {
     logo: "./src/images/dg.jpg",
     title: "Digital Giants Esports (DG)",
     position: "Member",
-    description: "The official esports organization of the University of Rizal System, bringing together students who share a passion for competitive gaming, digital media, and online community building. The organization promotes teamwork, strategic thinking, and sportsmanship through organized tournaments, scrimmages, campus-wide and university-wide gaming events. Digital Giants Esports also serves as a platform for student gamers to showcase their skills, connect with fellow enthusiasts, and represent the school in local and national esports competitions.",
+    description:
+      "The official esports organization of the University of Rizal System, bringing together students who share a passion for competitive gaming, digital media, and online community building. The organization promotes teamwork, strategic thinking, and sportsmanship through organized tournaments, scrimmages, campus-wide and university-wide gaming events. Digital Giants Esports also serves as a platform for student gamers to showcase their skills, connect with fellow enthusiasts, and represent the school in local and national esports competitions.",
   },
   {
     logo: "./src/images/cossb.png",
     title: "College of Science Student Body (COSSB)",
     position: "Member",
-    description: "Dynamic and service-oriented group that represents the collective interests of students within the College of Science. It serves as a bridge between the student body and the college administration, organizing academic, social, and outreach activities to enrich student life. The organization promotes leadership, unity, and academic excellence while ensuring that student voices are heard and their concerns addressed through various initiatives and events.",
+    description:
+      "Dynamic and service-oriented group that represents the collective interests of students within the College of Science. It serves as a bridge between the student body and the college administration, organizing academic, social, and outreach activities to enrich student life. The organization promotes leadership, unity, and academic excellence while ensuring that student voices are heard and their concerns addressed through various initiatives and events.",
   },
   {
     logo: "./src/images/sro.png",
     title: "Student Resercher's Organization (SRO)",
     position: "Member",
-    description: "Dedicated academic group that fosters a culture of inquiry, innovation, and critical thinking among students. It supports aspiring researchers across disciplines by providing opportunities for training, collaboration, and presentation of research work. The organization aims to cultivate research skills, promote ethical research practices, and encourage student-led projects that contribute to academic growth and community development.",
+    description:
+      "Dedicated academic group that fosters a culture of inquiry, innovation, and critical thinking among students. It supports aspiring researchers across disciplines by providing opportunities for training, collaboration, and presentation of research work. The organization aims to cultivate research skills, promote ethical research practices, and encourage student-led projects that contribute to academic growth and community development.",
   },
 ];
 
@@ -45,7 +49,7 @@ function Organization() {
   });
 
   const [isVisible, setIsVisible] = useState(false);
-  const sliderRef = useRef(null); 
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     setIsVisible(inView);
@@ -53,7 +57,7 @@ function Organization() {
 
   const settings = {
     centerMode: true,
-    centerPadding: "160px", // Side peek
+    centerPadding: "180px", // smaller on mobile
     dots: true,
     infinite: true,
     speed: 500,
@@ -63,6 +67,21 @@ function Organization() {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerPadding: "10px",
+        },
+      },
+      {
+        breakpoint: 1024, // For larger screens
+        settings: {
+          centerPadding: "100px", // Make space for background cards to show
+          slidesToShow: 3, // Show 3 cards on desktop, so the background is visible
+        },
+      },
+    ],
     appendDots: (dots) => (
       <div className="custom-dots">
         <ul>{dots}</ul>
@@ -75,16 +94,16 @@ function Organization() {
     <section
       id="organization"
       ref={ref}
-      className={`container mx-auto flex flex-col items-center px-4 py-20 scroll-mt-48 transition-all duration-700 ease-in-out ${
+      className={`min-h-screen mx-auto flex flex-col items-center px-4 py-20 scroll-mt-48 transition-all duration-700 ease-in-out ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      <h2 className="text-3xl py-0 md:text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
         School Organizations
       </h2>
 
       <div className="w-full pb-10 max-w-6xl">
-        <Slider ref={sliderRef} {...settings}>
+      <Slider ref={sliderRef} {...settings}>
           {orgs.map((org, index) => (
             <div key={index} className="px-2">
               <div className="org-card p-8 rounded-2xl text-center transition-all duration-500 ease-in-out dark:bg-gray-800 shadow-md dark:shadow-lg flex flex-col justify-between h-[560px] max-h-[560px]">
@@ -106,21 +125,6 @@ function Organization() {
             </div>
           ))}
         </Slider>
-
-        {/* Custom Arrow Buttons */}
-        {/* <div
-          className="custom-arrow left-arrow"
-          onClick={() => sliderRef.current.slickPrev()}
-        >
-          ←
-        </div>
-        <div
-          className="custom-arrow right-arrow"
-          onClick={() => sliderRef.current.slickNext()}
-        >
-          →
-        </div> */}
-
       </div>
     </section>
   );
