@@ -13,10 +13,13 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <Organizations />
-      <Skills />
       <Tech_stack />
+      <Skills />
       <Projects />
+      {/* internship experience */}
+      {/* education */}
+      {/* certificates */}
+      <Organizations />
       <Contact />
       <Footer />
     </div>

@@ -1,16 +1,58 @@
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaJs, FaNode } from 'react-icons/fa';
-import { SiTailwindcss, SiMysql, SiPhp, SiPython } from 'react-icons/si';
+import {
+  FaReact,
+  FaJs,
+  FaNode,
+  FaGitAlt,
+  FaGithub,
+} from 'react-icons/fa';
+import {
+  SiTailwindcss,
+  SiMysql,
+  SiPhp,
+  SiPython,
+  SiVercel,
+  SiFigma,
+  SiHtml5,
+  SiCss3,
+  SiHostinger,
+} from 'react-icons/si';
 import TechItem from '../hooks/TechItem';
+import { BiLogoVisualStudio } from "react-icons/bi";
+import { IoLogoNodejs } from "react-icons/io5";
 
-const tech_stack = [
-  { title: "React", icon: <FaReact size={48} className="text-blue-500" /> },
-  { title: "JavaScript", icon: <FaJs size={48} className="text-yellow-400" /> },
-  { title: "PHP", icon: <SiPhp size={48} className="text-purple-700" /> },
-  { title: "Tailwind CSS", icon: <SiTailwindcss size={48} className="text-teal-400" /> },
-  { title: "MySQL", icon: <SiMysql size={48} className="text-blue-700" /> },
-  { title: "Node.js", icon: <FaNode size={48} className="text-green-600" /> },
-  { title: "Python", icon: <SiPython size={48} className="text-yellow-500" /> },
+
+const techGroups = [
+  {
+    title: 'Front-end',
+    items: [
+      { title: 'HTML', icon: <SiHtml5 size={48} className="text-orange-500" /> },
+      { title: 'CSS', icon: <SiCss3 size={48} className="text-blue-600" /> },
+      { title: 'JavaScript', icon: <FaJs size={48} className="text-yellow-400" /> },
+      { title: 'React', icon: <FaReact size={48} className="text-blue-500" /> },
+      { title: 'Tailwind CSS', icon: <SiTailwindcss size={48} className="text-teal-400" /> },
+    ],
+  },
+  {
+    title: 'Back-end',
+    items: [
+      { title: 'PHP', icon: <SiPhp size={48} className="text-purple-700" /> },
+      { title: 'Python', icon: <SiPython size={48} className="text-yellow-500" /> },
+      { title: 'Node.js', icon: <IoLogoNodejs size={48} className="text-green-600" /> },
+      { title: 'MySQL', icon: <SiMysql size={48} className="text-blue-700" /> },
+    ],
+  },
+  {
+    title: 'Tools & Technologies',
+    items: [
+      { title: 'VS Code', icon: <BiLogoVisualStudio size={48} className="text-blue-500" /> },
+      { title: 'Git', icon: <FaGitAlt size={48} className="text-red-500" /> },
+      { title: 'GitHub', icon: <FaGithub size={48} className="text-gray-800 dark:text-white" /> },
+      { title: 'Vercel', icon: <SiVercel size={48} className="text-black dark:text-white" /> },
+      { title: 'Hostinger', icon: <SiHostinger size={48} className="text-purple-500" />},
+      { title: 'Figma', icon: <SiFigma size={48} className="text-pink-500" /> },
+    ],
+  },
 ];
 
 function Tech_stack() {
@@ -27,12 +69,21 @@ function Tech_stack() {
           titleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
-        Languages, Frameworks, and Tools
+        Skills & Technologies
       </h2>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {tech_stack.map((tech, index) => (
-          <TechItem key={index} icon={tech.icon} title={tech.title} />
+      <div className="space-y-16">
+        {techGroups.map((group, index) => (
+          <div key={index}>
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white mb-8 text-center">
+              {group.title}
+            </h3>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {group.items.map((tech, idx) => (
+                <TechItem key={idx} icon={tech.icon} title={tech.title} />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>
