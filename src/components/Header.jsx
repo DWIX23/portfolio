@@ -71,10 +71,9 @@ function Header() {
         {/* Desktop menu */}
         <ul className="hidden md:flex gap-6 items-center">
           <li><a href="#about" onClick={handleDesktopLinkClick('#about')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">About</a></li>
-          <li><a href="#organization" onClick={handleDesktopLinkClick('#organization')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Organizations</a></li>
           <li><a href="#skills" onClick={handleDesktopLinkClick('#skills')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Skills</a></li>
-          <li><a href="#tech_stack" onClick={handleDesktopLinkClick('#tech_stack')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Tech Stack</a></li>
           <li><a href="#projects" onClick={handleDesktopLinkClick('#projects')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Projects</a></li>
+          <li><a href="#organization" onClick={handleDesktopLinkClick('#organization')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Organizations</a></li>
           <li><a href="#contact" onClick={handleDesktopLinkClick('#contact')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Contacts</a></li>
           <li>
             <button
@@ -118,10 +117,9 @@ function Header() {
 
           <ul className="flex flex-col gap-6 flex-grow">
             <li><a href="#about" onClick={handleMobileLinkClick('#about')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">About</a></li>
-            <li><a href="#organization" onClick={handleMobileLinkClick('#organization')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Organizations</a></li>
             <li><a href="#skills" onClick={handleMobileLinkClick('#skills')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Skills</a></li>
-            <li><a href="#tech_stack" onClick={handleMobileLinkClick('#tech_stack')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Tech Stack</a></li>
             <li><a href="#projects" onClick={handleMobileLinkClick('#projects')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Projects</a></li>
+            <li><a href="#organization" onClick={handleMobileLinkClick('#organization')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Organizations</a></li>
             <li><a href="#contact" onClick={handleMobileLinkClick('#contact')} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-0 ease-in-out delay-0">Contacts</a></li>
             <li className="mt-4">
               <span className="block mb-1 text-sm">Dark Mode</span>

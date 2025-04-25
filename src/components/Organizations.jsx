@@ -103,8 +103,8 @@ function Organization() {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
-        School Organizations
+      <h2 className="text-3xl md:text-4xl font-bold py-20 text-center text-gray-900 dark:text-white">
+        My School Organizations
       </h2>
 
       <div className="w-full pb-10 max-w-6xl">
