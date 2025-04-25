@@ -44,7 +44,7 @@ const techGroups = [
 
 function Skills() {
   const { ref: titleRef, inView: titleInView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
 
