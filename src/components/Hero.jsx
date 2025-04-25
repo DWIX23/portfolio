@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { FaArrowDown } from 'react-icons/fa'; // Importing an icon for the button
 
 function Hero() {
+  const [isModalVisible, setIsModalVisible] = useState(false); // State to track modal visibility
+
   // Scroll to the projects section when the button is clicked
   const smoothScrollTo = (target, duration = 800, offset = 80) => {
     const start = window.scrollY;
@@ -34,23 +37,29 @@ function Hero() {
     }
   };
 
+  // Function to handle the emoji click
+  const handleEmojiClick = () => {
+    setIsModalVisible(!isModalVisible); // Toggle the modal visibility on emoji click
+  };
+
   return (
     <section
       className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-custom-gradient-start via-custom-gradient-middle via-custom-gradient-rose via-custom-gradient-red via-custom-gradient-rose via-custom-gradient-end to-custom-gradient-start bg-[length:200%_200%] bg-[position:0%_50%] animate-gradient-loop px-4 sm:px-6 lg:px-8"
     >
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-wide">
-  Hi, I'm Darwin James{' '}
-  <span
-    role="img"
-    aria-label="wave"
-    className="inline-block animate-wave origin-[70%_70%]"
-  >
-    👋
-  </span>
-</h1>
+        Hi, I'm Darwin James{' '}
+        <span
+          role="img"
+          aria-label="wave"
+          className="inline-block animate-wave origin-[70%_70%] wave-emoji" // Add a class to the emoji for targeting
+          onClick={handleEmojiClick} // Add the click handler to toggle the modal
+        >
+          👋
+        </span>
+      </h1>
 
       <p className="text-lg sm:text-xl md:text-2xl text-white opacity-80 mb-8 max-w-2xl">
-        Back-End Developer | React Specialist | I love You Yani | Passionate about creating impactful, scalable solutions
+        Back-End Developer | React Specialist | Passionate about creating impactful, scalable solutions
       </p>
       <a
         href="#projects"
@@ -60,6 +69,26 @@ function Hero() {
         <span>View My Work</span>
         <FaArrowDown className="w-5 h-5 text-white" />
       </a>
+
+      {/* Conditionally render the modal */}
+      {isModalVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm">
+            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white transition-all duration-700">
+              You Found it yehey😁🫶🥰
+            </h2>
+            <p className="text-gray-900 dark:text-white transition-all duration-700">
+              I love you Yaniiii💖❤️💖
+            </p>
+            <button
+              onClick={() => setIsModalVisible(false)} // Close the modal when button is clicked
+              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
