@@ -1,25 +1,13 @@
 import { useInView } from 'react-intersection-observer';
 import {
-  FaReact,
-  FaJs,
-  FaNode,
-  FaGitAlt,
-  FaGithub,
+  FaReact, FaJs, FaNode, FaGitAlt, FaGithub,
 } from 'react-icons/fa';
 import {
-  SiTailwindcss,
-  SiMysql,
-  SiPhp,
-  SiPython,
-  SiVercel,
-  SiFigma,
-  SiHtml5,
-  SiCss3,
-  SiHostinger,
+  SiTailwindcss, SiMysql, SiPhp, SiPython, SiVercel, SiFigma, SiHtml5, SiCss3, SiHostinger,
 } from 'react-icons/si';
+import { BiLogoVisualStudio } from 'react-icons/bi';
+import { IoLogoNodejs } from 'react-icons/io5';
 import TechItem from '../hooks/TechItem';
-import { BiLogoVisualStudio } from "react-icons/bi";
-import { IoLogoNodejs } from "react-icons/io5"; 
 
 const techGroups = [
   {
@@ -48,7 +36,7 @@ const techGroups = [
       { title: 'Git', icon: <FaGitAlt size={48} className="text-red-500" /> },
       { title: 'GitHub', icon: <FaGithub size={48} className="text-gray-800 dark:text-white" /> },
       { title: 'Vercel', icon: <SiVercel size={48} className="text-black dark:text-white" /> },
-      { title: 'Hostinger', icon: <SiHostinger size={48} className="text-purple-500" />},
+      { title: 'Hostinger', icon: <SiHostinger size={48} className="text-purple-500" /> },
       { title: 'Figma', icon: <SiFigma size={48} className="text-pink-500" /> },
     ],
   },
@@ -56,9 +44,13 @@ const techGroups = [
 
 function Skills() {
   const { ref: titleRef, inView: titleInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
+    triggerOnce: true,
+    threshold: 0.1,
   });
+
+  // Create separate refs and inViews for each group
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const groupInViews = techGroups.map(() => useInView({ triggerOnce: false, threshold: 0.1 }));
 
   return (
     <section id="skills" className="container mx-auto py-20 px-6 scroll-mt-20">
@@ -72,18 +64,27 @@ function Skills() {
       </h2>
 
       <div className="space-y-16">
-        {techGroups.map((group, index) => (
-          <div key={index}>
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white mb-8 text-center">
-              {group.title}
-            </h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-              {group.items.map((tech, idx) => (
-                <TechItem key={idx} icon={tech.icon} title={tech.title} />
-              ))}
+        {techGroups.map((group, index) => {
+          const { ref, inView } = groupInViews[index];
+          return (
+            <div
+              key={index}
+              ref={ref}
+              className={`transition-all duration-700 ease-in-out transform ${
+                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+            >
+              <h3 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white mb-8 text-center">
+                {group.title}
+              </h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {group.items.map((tech, idx) => (
+                  <TechItem key={idx} icon={tech.icon} title={tech.title} />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
