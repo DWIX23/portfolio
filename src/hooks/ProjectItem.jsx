@@ -29,16 +29,16 @@ function ProjectItem({ title, description, images }) {
 
   // The modal content rendered into a portal
   const modalContent = (
-    <div className="fixed inset-0 bg-black bg-opacity-80 z-[9999] flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-80 z-[9999] flex items-center justify-center px-4">
       <div className="relative flex items-center justify-center">
         <img
           src={currentImg}
           alt="Preview"
-          className="max-w-[90vw] max-h-[90vh] w-auto h-auto rounded-lg object-contain"
+          className="max-w-[90vw] max-h-[80vh] w-auto h-auto rounded-lg object-contain"
         />
         <button
           onClick={closeModal}
-          className="absolute -top-6 -right-6 text-white bg-black bg-opacity-70 rounded-full p-2 text-3xl hover:bg-opacity-90 transition"
+          className="absolute -top-0 -right-0 text-white bg-black bg-opacity-70 rounded-full p-2 text-2xl sm:text-3xl hover:bg-opacity-90 transition"
           aria-label="Close"
         >
           &times;
@@ -66,17 +66,18 @@ function ProjectItem({ title, description, images }) {
             <img
               src={img}
               alt={`${title} ${i + 1}`}
-              className="object-contain max-h-60 md:max-h-80"
+              className="object-contain w-full max-h-52 sm:max-h-60 md:max-h-72 lg:max-h-80 h-auto"
             />
           </div>
         ))}
       </Carousel>
 
       {/* Title & Description */}
-      <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
+      <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-800 dark:text-white">
         {title}
       </h3>
-      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{description}</p>
+
 
       {/* Render modal in portal */}
       {isModalOpen && createPortal(modalContent, document.body)}

@@ -43,13 +43,17 @@ function Projects() {
   });
 
   return (
-    <section id="projects" ref = {ref} className={`container mx-auto py-20 px-4 scroll-mt-24 transform transition-all duration-700 ${
-      inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-    }`}>
+    <section
+      id="projects"
+      ref={ref}
+      className={`max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 scroll-mt-24 transform transition-all duration-700 ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
         Projects
       </h2>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <ProjectItem
             key={index}
