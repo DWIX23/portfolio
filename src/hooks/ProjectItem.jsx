@@ -3,8 +3,10 @@ import { createPortal } from 'react-dom';
 import { Carousel } from 'react-responsive-carousel';
 import { useInView } from 'react-intersection-observer';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {FaGithub, FaRegSadTear,} from 'react-icons/fa';
+import { FiExternalLink } from "react-icons/fi";
 
-function ProjectItem({ title, description, images }) {
+function ProjectItem({ title, description, languages, link, images }) {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
   const [isModalOpen, setModalOpen] = useState(false);
   const [currentImg, setCurrentImg] = useState('');
@@ -34,11 +36,11 @@ function ProjectItem({ title, description, images }) {
         <img
           src={currentImg}
           alt="Preview"
-          className="max-w-[90vw] max-h-[80vh] w-auto h-auto rounded-lg object-contain"
+          className="max-w-[90vw] max-h-[80vh] w-auto h-auto rounded-lg object-contain animate-fadeIn"
         />
         <button
           onClick={closeModal}
-          className="absolute -top-0 -right-0 text-white bg-black bg-opacity-70 rounded-full p-2 text-2xl sm:text-3xl hover:bg-opacity-90 transition"
+          className="absolute -top-6 -right-6 text-white bg-black bg-opacity-70 rounded-full p-3 text-2xl sm:text-3xl hover:bg-opacity-90 transition"
           aria-label="Close"
         >
           &times;
@@ -77,6 +79,52 @@ function ProjectItem({ title, description, images }) {
         {title}
       </h3>
       <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{description}</p>
+      
+      <div className="flex flex-wrap gap-2 py-4">
+        {languages.map((language, idx) => (
+          <span
+            key={idx}
+            className="px-3 py-1 text-sm font-semibold text-blue-500 dark:text-gray-300 bg-blue-200 dark:bg-blue-700 rounded-full">
+            {language}
+          </span>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-4">
+      {link.viewCode ? (
+          <a
+            href={link.viewCode}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400 transition duration-300"
+          >
+            <FaGithub />
+            View Code
+          </a>
+        ) : (
+          <span className="flex items-center gap-2 text-red-500 dark:text-red-400 text-sm">
+            <FaRegSadTear />
+            Sorry, View Code Unavailable
+          </span>
+        )}
+
+        {link.liveDemo ? (
+          <a
+            href={link.liveDemo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-400 transition duration-300"
+          >
+            <FiExternalLink />
+            Live Demo
+          </a>
+        ) : (
+          <span className="flex items-center gap-2 text-red-500 dark:text-red-400 text-sm">
+            <FaRegSadTear />
+            Sorry, Live Demo Unavailable
+          </span>
+        )}
+      </div>
 
 
       {/* Render modal in portal */}
