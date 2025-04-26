@@ -1,9 +1,9 @@
 import { useInView } from 'react-intersection-observer';
 import {
-  FaReact, FaJs, FaNode, FaGitAlt, FaGithub,
+  FaReact, FaJs, FaNode, FaGitAlt, FaGithub, FaBootstrap
 } from 'react-icons/fa';
 import {
-  SiTailwindcss, SiMysql, SiPhp, SiPython, SiVercel, SiFigma, SiHtml5, SiCss3, SiHostinger,
+  SiTailwindcss, SiMysql, SiPhp, SiPython, SiVercel, SiFigma, SiHtml5, SiCss3, SiHostinger, SiCanva, SiNotion
 } from 'react-icons/si';
 import { BiLogoVisualStudio } from 'react-icons/bi';
 import { IoLogoNodejs } from 'react-icons/io5';
@@ -37,7 +37,10 @@ const techGroups = [
       { title: 'GitHub', icon: <FaGithub size={48} className="text-gray-800 dark:text-white" /> },
       { title: 'Vercel', icon: <SiVercel size={48} className="text-black dark:text-white" /> },
       { title: 'Hostinger', icon: <SiHostinger size={48} className="text-purple-500" /> },
+      { title: 'Notion', icon: <SiNotion size={48} className="text-black dark:text-white" /> },
       { title: 'Figma', icon: <SiFigma size={48} className="text-pink-500" /> },
+      { title: 'Canva', icon: <SiCanva size={48} className="text-purple-400" /> },
+      { title: 'Bootstrap', icon: <FaBootstrap size={48} className="text-purple-600" /> },
     ],
   },
 ];

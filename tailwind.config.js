@@ -37,8 +37,15 @@ export default {
       },
       animation: {
         'gradient-loop': 'gradientLoop 15s linear infinite',
+        wave: 'wave 2s ease-in-out infinite',
+        fadeIn: 'fadeIn 0.5s ease-in-out forwards',
+        fadeOut: 'fadeOut 0.5s ease-in-out forwards',
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         wave: {
           '0%': { transform: 'rotate(0deg)' },
           '10%': { transform: 'rotate(14deg)' },
@@ -57,10 +64,6 @@ export default {
             backgroundPosition: '200% 50%',
           },
         },
-      animation: {
-        wave: 'wave 2s ease-in-out infinite',
-        'gradient-loop': 'gradientLoop 15s linear infinite',
-      },
       },
       scrollBehavior: ['smooth', 'responsive'],
     },
