@@ -4,6 +4,7 @@ import About from './components/About';
 import Organizations from './components/Organizations';
 import Skills from './components/Skills'; 
 import Projects from './components/Projects';
+import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Projects />
       {/* internship experience */}
       {/* education */}
-      {/* certificates */}
+      <Certificates />
       <Organizations />
       <Contact />
       <Footer />
