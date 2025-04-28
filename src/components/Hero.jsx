@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { FaArrowDown } from 'react-icons/fa'; // Importing an icon for the button
+import { TypeAnimation } from 'react-type-animation'; // Import the typing animation component
 
 function Hero() {
   const [isModalVisible, setIsModalVisible] = useState(false); // State to track modal visibility
+  const [showEmoji, setShowEmoji] = useState(false); // State to track when to show the emoji
+  const [isTypingComplete, setIsTypingComplete] = useState(false); // State to control cursor
 
   // Scroll to the projects section when the button is clicked
   const smoothScrollTo = (target, duration = 800, offset = 80) => {
+    // ... (keep your existing smoothScrollTo function)
     const start = window.scrollY;
     const end = target.getBoundingClientRect().top + window.scrollY - offset;
     const distance = end - start;
@@ -47,19 +51,47 @@ function Hero() {
       className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-custom-gradient-start via-custom-gradient-middle via-custom-gradient-rose via-custom-gradient-red via-custom-gradient-rose via-custom-gradient-end to-custom-gradient-start bg-[length:200%_200%] bg-[position:0%_50%] animate-gradient-loop px-4 sm:px-6 lg:px-8"
     >
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-wide">
-        Hi, I'm Darwin James{' '}
-        <span
-          role="img"
-          aria-label="wave"
-          className="inline-block animate-wave origin-[70%_70%] wave-emoji" // Add a class to the emoji for targeting
-          onClick={handleEmojiClick} // Add the click handler to toggle the modal
-        >
-          👋
-        </span>
+        {/* Typing Animation Component */}
+        <TypeAnimation
+          sequence={[
+            300, // Initial delay before typing starts
+            'Hi, Welcome!',
+            1500, // Wait after "Welcome!"
+            'Hi, ', // Delete "Welcome!"
+            500,  // Wait after deleting
+            'Hi, I\'m Darwin James',
+            50, // Type the final name
+            // --- Sequence Change Starts Here ---
+            () => {
+              setIsTypingComplete(true); // <-- Hide cursor immediately
+            },
+            300, // <-- Short delay (50ms) to allow cursor state update to process
+            () => {
+              setShowEmoji(true); // <-- Show emoji AFTER cursor is hidden
+            }
+            // --- Sequence Change Ends Here ---
+          ]}
+          wrapper="span"
+          // Control cursor visibility using state
+          cursor={!isTypingComplete} // Cursor is visible only when isTypingComplete is false
+          repeat={0}
+          style={{ display: 'inline-block' }}
+        />
+        {/* Conditionally render the emoji span */}
+        {showEmoji && (
+          <span
+            role="img"
+            aria-label="wave"
+            className="inline-block origin-[70%_70%] wave-emoji ml-2 animate-wave"
+            onClick={handleEmojiClick}
+          >
+            👋
+          </span>
+        )}
       </h1>
 
       <p className="text-lg sm:text-xl md:text-2xl text-white opacity-80 mb-8 max-w-2xl">
-        Back-End Developer | React Specialist | Passionate about creating impactful, scalable solutions
+        Aspiring Back-End Developer | React Specialist | Passionate about creating impactful, scalable solutions
       </p>
       <a
         href="#projects"
@@ -81,7 +113,7 @@ function Hero() {
               I love you Yaniiii💖❤️💖
             </p>
             <button
-              onClick={() => setIsModalVisible(false)} // Close the modal when button is clicked
+              onClick={() => setIsModalVisible(false)}
               className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
             >
               Close
