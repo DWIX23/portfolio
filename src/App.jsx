@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Experience from './components/Experience';
 function App() {
   return (
     <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-500 delay-200 min-h-screen">
@@ -15,8 +16,7 @@ function App() {
       <About />
       <Skills />
       <Projects />
-      {/* internship experience */}
-      {/* education */}
+      <Experience />
       <Certificates />
       <Organizations />
       <Contact />

@@ -115,7 +115,7 @@ function Organization() {
                 <img
                   src={org.logo}
                   alt={org.title}
-                  className="w-36 h-36 object-contain mx-auto mb-6 rounded-full"
+                  className="w-40 h-40 object-contain mx-auto mb-6 rounded-full"
                 />
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">
                   {org.title}
