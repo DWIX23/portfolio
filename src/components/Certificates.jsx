@@ -7,6 +7,9 @@ import cybersecurityImg from '../images/cert/cybersecurity.png';
 import dlImg from '../images/cert/deans list cert blur.png';
 import ethicalImg from '../images/cert/ethical.png';
 import winserverImg from '../images/cert/win server.png';
+import darkwebImg from '../images/cert/darkweb.png';
+import cyberbusinessImg from '../images/cert/cybersecurity for business.png';
+import  sqlImg from '../images/cert/sql injection attacks.png';
 
 const certificates = [
   {
@@ -14,42 +17,54 @@ const certificates = [
     issuer: "Nexus Cloud IT Solutions Inc.",
     date: "April 3, 2025",
     image: completionImg,
-    // link: "", // REMOVED
   },
   {
     title: "Cisco Certified Support Technician",
     issuer: "Nexus Cloud IT Solutions Inc.",
     date: "February 28, 2025",
     image: ccstImg,
-    // link: "", // REMOVED
   },
   {
     title: "Cybersecurity Essentials: Defend, Protect & Secure",
     issuer: "Nexus Cloud IT Solutions Inc.",
     date: "February 22, 2025",
     image: cybersecurityImg,
-    // link: "", // REMOVED
+  },
+  {
+    title: "Cybersecurity for Business - The fundamental Edition",
+    issuer: "EC-Council",
+    date: "February 22, 2025",
+    image: cyberbusinessImg,
+  },
+  {
+    title: "Introduction to Dark Web, Anonymity & Cryptocurrency",
+    issuer: "EC-Council",
+    date: "February 22, 2025",
+    image: darkwebImg,
+  },
+  {
+    title: "SQL Injection Attacks",
+    issuer: "EC-Council",
+    date: "February 22, 2025",
+    image: sqlImg,
   },
   {
     title: "Penetration Testing with Ethical Hacking",
     issuer: "Nexus Cloud IT Solutions Inc.",
     date: "February 16, 2025",
     image: ethicalImg,
-    // link: "", // REMOVED
   },
   {
     title: "windows Server 2019: System Administration & Automation",
     issuer: "Nexus Cloud IT Solutions Inc.",
     date: "February 14, 2025",
     image: winserverImg,
-    // link: "", // REMOVED
   },
   {
     title: "Deans List Certificate",
     issuer: "University of Rizal System-Morong",
     date: "October 14, 2024",
     image: dlImg,
-    // link: "", // REMOVED
   },
 
 ];
