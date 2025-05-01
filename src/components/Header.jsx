@@ -70,7 +70,7 @@ function Header() {
 
   return (
     <header className="bg-white dark:bg-gray-900 dark:text-white shadow-md sticky top-0 z-50">
-      <nav className="container mx-auto flex justify-between items-center p-4">
+      <nav className="mx-auto flex justify-between items-center p-4">
         <h1 className="text-xl font-bold">Darwin's Portfolio</h1>
 
         {/* Desktop menu */}

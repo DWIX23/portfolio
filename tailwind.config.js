@@ -28,6 +28,12 @@ export default {
   darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
+      // screens: {
+      //   'sm': '320px',  // small screens
+      //   'md': '768px',  // medium screens
+      //   'lg': '1024px', // large screens
+      //   'xl': '1280px', // extra large screens
+      // },
       colors: {
         'custom-gradient-start': '#38bdf8', // sky-400
         'custom-gradient-middle': '#6366f1', // indigo-500

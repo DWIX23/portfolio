@@ -23,6 +23,7 @@ const techGroups = [
       { title: 'JavaScript', icon: <FaJs size={iconSize} className="text-yellow-400" /> },
       { title: 'React', icon: <FaReact size={iconSize} className="text-blue-500" /> },
       { title: 'Tailwind CSS', icon: <SiTailwindcss size={iconSize} className="text-teal-400" /> },
+      { title: 'Bootstrap', icon: <FaBootstrap size={iconSize} className="text-purple-700" /> },
     ],
   },
   {
@@ -32,7 +33,6 @@ const techGroups = [
       { title: 'Python', icon: <SiPython size={iconSize} className="text-yellow-500" /> },
       { title: 'Node.js', icon: <IoLogoNodejs size={iconSize} className="text-green-600" /> },
       { title: 'MySQL', icon: <SiMysql size={iconSize} className="text-blue-700" /> },
-      { title: 'Postman', icon: <SiPostman size={iconSize} className="text-orange-500" /> },
     ],
   },
   {
@@ -42,12 +42,12 @@ const techGroups = [
       { title: 'Git', icon: <FaGitAlt size={iconSize} className="text-red-500" /> },
       { title: 'GitHub', icon: <FaGithub size={iconSize} className="text-gray-800 dark:text-gray-300" /> }, 
       { title: 'Vercel', icon: <SiVercel size={iconSize} className="text-black dark:text-white" /> },
+      { title: 'Postman', icon: <SiPostman size={iconSize} className="text-orange-500" /> },
       { title: 'Hostinger', icon: <SiHostinger size={iconSize} className="text-purple-600" /> },
       { title: 'Notion', icon: <SiNotion size={iconSize} className="text-black dark:text-white" /> },
       { title: 'Obsidian', icon: <SiObsidian size={iconSize} className="text-purple-500" /> },
       { title: 'Figma', icon: <SiFigma size={iconSize} className="text-pink-500" /> },
       { title: 'Canva', icon: <SiCanva size={iconSize} className="text-purple-400" /> },
-      { title: 'Bootstrap', icon: <FaBootstrap size={iconSize} className="text-purple-700" /> },
     ],
   },
 ];
@@ -87,11 +87,19 @@ function Skills() {
                 {group.title}
               </h3>
               {/* --- Updated Grid Layout --- */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"> {/* Start with 2 cols, adjust gaps */}
+              <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:justify-center">
                 {group.items.map((tech, idx) => (
-                  <TechItem key={idx} icon={tech.icon} title={tech.title} />
+                  <div
+                  key={idx}
+                  className="w-full basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 min-w-[160px] flex"
+                >
+                  <div className="flex flex-col w-full h-full">
+                    <TechItem icon={tech.icon} title={tech.title} />
+                  </div>
+                </div>                
                 ))}
               </div>
+
               {/* --- End of Updated Grid Layout --- */}
             </div>
           );
