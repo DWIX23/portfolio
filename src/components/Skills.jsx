@@ -5,7 +5,7 @@ import {
   FaReact, FaJs, FaNode, FaGitAlt, FaGithub, FaBootstrap
 } from 'react-icons/fa';
 import {
-  SiTailwindcss, SiMysql, SiPhp, SiPython, SiVercel, SiFigma, SiHtml5, SiCss3, SiHostinger, SiCanva, SiNotion
+  SiTailwindcss, SiMysql, SiPhp, SiPython, SiVercel, SiFigma, SiHtml5, SiCss3, SiHostinger, SiCanva, SiNotion, SiPostman, SiObsidian
 } from 'react-icons/si';
 import { BiLogoVisualStudio } from 'react-icons/bi';
 import { IoLogoNodejs } from 'react-icons/io5';
@@ -32,6 +32,7 @@ const techGroups = [
       { title: 'Python', icon: <SiPython size={iconSize} className="text-yellow-500" /> },
       { title: 'Node.js', icon: <IoLogoNodejs size={iconSize} className="text-green-600" /> },
       { title: 'MySQL', icon: <SiMysql size={iconSize} className="text-blue-700" /> },
+      { title: 'Postman', icon: <SiPostman size={iconSize} className="text-orange-500" /> },
     ],
   },
   {
@@ -39,13 +40,14 @@ const techGroups = [
     items: [
       { title: 'VS Code', icon: <BiLogoVisualStudio size={iconSize} className="text-blue-500" /> },
       { title: 'Git', icon: <FaGitAlt size={iconSize} className="text-red-500" /> },
-      { title: 'GitHub', icon: <FaGithub size={iconSize} className="text-gray-800 dark:text-gray-300" /> }, // Adjusted dark color
+      { title: 'GitHub', icon: <FaGithub size={iconSize} className="text-gray-800 dark:text-gray-300" /> }, 
       { title: 'Vercel', icon: <SiVercel size={iconSize} className="text-black dark:text-white" /> },
-      { title: 'Hostinger', icon: <SiHostinger size={iconSize} className="text-purple-500" /> },
+      { title: 'Hostinger', icon: <SiHostinger size={iconSize} className="text-purple-600" /> },
       { title: 'Notion', icon: <SiNotion size={iconSize} className="text-black dark:text-white" /> },
+      { title: 'Obsidian', icon: <SiObsidian size={iconSize} className="text-purple-500" /> },
       { title: 'Figma', icon: <SiFigma size={iconSize} className="text-pink-500" /> },
       { title: 'Canva', icon: <SiCanva size={iconSize} className="text-purple-400" /> },
-      { title: 'Bootstrap', icon: <FaBootstrap size={iconSize} className="text-purple-600" /> },
+      { title: 'Bootstrap', icon: <FaBootstrap size={iconSize} className="text-purple-700" /> },
     ],
   },
 ];
