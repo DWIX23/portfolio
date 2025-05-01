@@ -96,10 +96,10 @@ function Hero() {
       <a
         href="#projects"
         onClick={handleScroll('#projects')}
-        className="px-8 py-3 bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 text-white font-semibold rounded-full hover:from-indigo-600 hover:via-purple-700 hover:to-pink-600 transition-all ease-in-out duration-300 shadow-xl transform hover:scale-110 flex items-center justify-center space-x-3 animate-gradient-button ring-4 ring-white ring-opacity-40"
+        className="inline-flex items-center space-x-3 px-6 py-3 text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl"
       >
         <span>View My Work</span>
-        <FaArrowDown className="w-5 h-5 text-white" />
+        <FaArrowDown className="w-5 h-5" />
       </a>
 
       {/* Conditionally render the modal */}
