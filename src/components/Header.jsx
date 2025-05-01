@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import useDarkMode from '../hooks/useDarkMode';
-import { FaGithub, FaLinkedin, FaBriefcase } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { SiIndeed } from "react-icons/si";
 
+const CONTACT_EMAIL = "darwin.02james@gmail.com";
+const LINKEDIN_URL = "https://linkedin.com/in/yourusername"; 
+const GITHUB_URL = "https://github.com/DWIX23";
+const INDEED_URL = "https://profile.indeed.com/p/darwinjamese-v4whs51";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useDarkMode();
@@ -148,14 +153,17 @@ function Header() {
           <footer className="mt-8 border-t pt-4 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300 ease-in-out delay-0">
             <div className="flex flex-col gap-3">
               <p className="flex items-center gap-1">&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+              <a href={`mailto:${CONTACT_EMAIL}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+                <FaEnvelope size={16} /> Email
+              </a>
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
                 <FaLinkedin size={16} /> LinkedIn
               </a>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
                 <FaGithub size={16} /> GitHub
               </a>
-              <a href="#" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
-                <FaBriefcase size={16} /> Indeed
+              <a href={INDEED_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 ease-in-out delay-0">
+                <SiIndeed size={16} /> Indeed
               </a>
             </div>
           </footer>

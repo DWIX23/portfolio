@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="w-full bg-gray-800 text-white text-center py-6">
       <p>&copy; {new Date().getFullYear()} Darwin James C. Espiritu. All rights reserved.</p>
-      <div className="mt-4 flex justify-center items-center gap-4 md:grid-cols-3">
+      {/* <div className="mt-4 flex justify-center items-center gap-4 md:grid-cols-3">
         <a
           href="" // replace with your actual URL
           target="_blank"
@@ -32,7 +32,7 @@ function Footer() {
           <FaBriefcase className="w-5 h-5" />
           Indeed
         </a>
-      </div>
+      </div> */}
     </footer>
   );
 }

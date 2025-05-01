@@ -34,6 +34,10 @@ export default {
         'custom-gradient-end': '#d946ef', // fuchsia-600
         'custom-gradient-rose': '#f43f5e', // rose-500
         'custom-gradient-red': '#f87171', // red-500
+        primary: { // Adding a primary color palette based on teal
+          DEFAULT: '#14b8a6', // teal-500
+          'hover': '#0d9488', // teal-600
+        },
       },
       animation: {
         'gradient-loop': 'gradientLoop 15s linear infinite',

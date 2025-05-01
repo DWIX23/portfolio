@@ -91,7 +91,7 @@ function Hero() {
       </h1>
 
       <p className="text-lg sm:text-xl md:text-2xl text-white opacity-80 mb-8 max-w-2xl">
-        Aspiring Back-End Developer | React Specialist | Passionate about creating impactful, scalable solutions
+        Aspiring Web Developer | React Specialist | Passionate about creating impactful, scalable solutions
       </p>
       <a
         href="#projects"

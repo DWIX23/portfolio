@@ -1,16 +1,18 @@
 import { useInView } from 'react-intersection-observer';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'; // Using react-icons
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'; 
+import { SiIndeed } from "react-icons/si";
 
 // --- IMPORTANT ---
 // 1. Sign up for a free account at Formspree (https://formspree.io/).
 // 2. Create a new form and get your unique endpoint URL.
 // 3. Replace 'YOUR_FORM_ID' in the form's action attribute below with your actual Formspree endpoint ID.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"; // <-- REPLACE THIS
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mblodvop"; // <-- REPLACE THIS
 
 // --- Your Contact Info (Used for direct links below the form) ---
-const CONTACT_EMAIL = "your.email@example.com"; // Replace with your actual email
+const CONTACT_EMAIL = "darwin.02james@gmail.com"; // Replace with your actual email
 const LINKEDIN_URL = "https://linkedin.com/in/yourusername"; // Replace with your LinkedIn profile URL
-const GITHUB_URL = "https://github.com/yourusername"; // Replace with your GitHub profile URL
+const GITHUB_URL = "https://github.com/DWIX23"; // Replace with your GitHub profile URL
+const INDEED_URL = "https://profile.indeed.com/p/darwinjamese-v4whs51"; // Replace with your Indeed profile URL
 
 
 function Contact() {
@@ -119,6 +121,15 @@ function Contact() {
             className="text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition duration-200"
           >
             <FaLinkedin size={30} />
+          </a>
+          <a
+            href={INDEED_URL}
+            aria-label="Indeed profile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition duration-200"
+          >
+            <SiIndeed size={30} />
           </a>
           <a
             href={GITHUB_URL}
