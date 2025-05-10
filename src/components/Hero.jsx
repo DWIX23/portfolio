@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaArrowDown } from 'react-icons/fa'; // Importing an icon for the button
 import { TypeAnimation } from 'react-type-animation'; // Import the typing animation component
 
@@ -6,6 +6,39 @@ function Hero() {
   const [isModalVisible, setIsModalVisible] = useState(false); // State to track modal visibility
   const [showEmoji, setShowEmoji] = useState(false); // State to track when to show the emoji
   const [isTypingComplete, setIsTypingComplete] = useState(false); // State to control cursor
+  const [shapes, setShapes] = useState([]);
+
+  const cyanGradients = [
+    'bg-cyan-theme-gradient-1',
+    'bg-cyan-theme-gradient-2',
+    'bg-cyan-theme-gradient-3',
+    'bg-cyan-theme-gradient-4',
+    'bg-cyan-theme-gradient-5',
+  ];
+
+  const waterAnimations = [
+    'water-flow-1',
+    'water-flow-2',
+    'water-flow-3',
+    'water-flow-4',
+    'water-flow-5',
+  ];
+
+  useEffect(() => {
+    // Generate random shapes on component mount
+    const newShapes = Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 400 + 200, // Random size between 200 and 600
+      top: Math.random() * 100, // Random top position
+      left: Math.random() * 100, // Random left position
+      animation: waterAnimations[Math.floor(Math.random() * waterAnimations.length)],
+      rotation: Math.random() * 360, // Random rotation
+      color: cyanGradients[Math.floor(Math.random() * cyanGradients.length)],
+      opacity: Math.random() * 0.2 + 0.1, // Random opacity between 0.1 and 0.3
+      delay: Math.random() * 5, // Random delay for animation start
+    }));
+    setShapes(newShapes);
+  }, []);
 
   // Scroll to the projects section when the button is clicked
   const smoothScrollTo = (target, duration = 800, offset = 80) => {
@@ -47,74 +80,98 @@ function Hero() {
   };
 
   return (
-    <section
-      className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-custom-gradient-start via-custom-gradient-middle via-custom-gradient-rose via-custom-gradient-red via-custom-gradient-rose via-custom-gradient-end to-custom-gradient-start bg-[length:200%_200%] bg-[position:0%_50%] animate-gradient-loop px-4 sm:px-6 lg:px-8"
-    >
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-wide">
-        {/* Typing Animation Component */}
-        <TypeAnimation
-          sequence={[
-            300, // Initial delay before typing starts
-            'Hi, Welcome!',
-            1500, // Wait after "Welcome!"
-            'Hi, ', // Delete "Welcome!"
-            500,  // Wait after deleting
-            'Hi, I\'m Darwin James',
-            50, // Type the final name
-            // --- Sequence Change Starts Here ---
-            () => {
-              setIsTypingComplete(true); // <-- Hide cursor immediately
-            },
-            300, // <-- Short delay (50ms) to allow cursor state update to process
-            () => {
-              setShowEmoji(true); // <-- Show emoji AFTER cursor is hidden
-            }
-            // --- Sequence Change Ends Here ---
-          ]}
-          wrapper="span"
-          // Control cursor visibility using state
-          cursor={!isTypingComplete} // Cursor is visible only when isTypingComplete is false
-          repeat={0}
-          style={{ display: 'inline-block' }}
-        />
-        {/* Conditionally render the emoji span */}
-        {showEmoji && (
-          <span
-            role="img"
-            aria-label="wave"
-            className="inline-block origin-[70%_70%] wave-emoji ml-2 animate-wave"
-            onClick={handleEmojiClick}
-          >
-            👋
-          </span>
-        )}
-      </h1>
+    <section className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+      {/* Background with cyan gradient and reduced blur effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-theme-light/20 via-cyan-theme/20 to-cyan-theme-dark/20 backdrop-blur-xs" />
+      
+      {/* Animated background shapes */}
+      <div className="absolute inset-0">
+        {shapes.map((shape) => (
+          <div
+            key={shape.id}
+            className={`absolute ${shape.color} rounded-full mix-blend-multiply filter blur-lg animate-${shape.animation}`}
+            style={{
+              top: `${shape.top}%`,
+              left: `${shape.left}%`,
+              transform: `rotate(${shape.rotation}deg)`,
+              width: `${shape.size}px`,
+              height: `${shape.size}px`,
+              opacity: shape.opacity,
+              animationDelay: `${shape.delay}s`,
+            }}
+          />
+        ))}
+        
+        {/* Additional geometric shapes */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow" />
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow" />
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-cyan-theme-light/30 rounded-full mix-blend-multiply filter blur-xl animate-float" />
+      </div>
 
-      <p className="text-lg sm:text-xl md:text-2xl text-white opacity-80 mb-8 max-w-2xl">
-        Aspiring Web Developer | React Specialist | Passionate about creating impactful, scalable solutions
-      </p>
-      <a
-        href="#projects"
-        onClick={handleScroll('#projects')}
-        className="inline-flex items-center space-x-3 px-6 py-3 text-white bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 rounded-full shadow-lg hover:shadow-xl"
-      >
-        <span>View My Work</span>
-        <FaArrowDown className="w-5 h-5" />
-      </a>
+      {/* Main content with glassmorphism */}
+      <div className="relative z-10 backdrop-blur-sm bg-white/10 rounded-2xl p-8 sm:p-12 shadow-2xl border border-white/20 max-w-4xl mx-4 animate-card-expand">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-wide">
+          <TypeAnimation
+            sequence={[
+              300,
+              'Hi, Welcome!',
+              1500,
+              'Hi, ',
+              500,
+              'Hi, I\'m Darwin James',
+              50,
+              () => {
+                setIsTypingComplete(true);
+              },
+              500,
+              () => {
+                setShowEmoji(true);
+              }
+            ]}
+            wrapper="span"
+            cursor={!isTypingComplete}
+            repeat={0}
+            style={{ display: 'inline-block' }}
+          />
+          {showEmoji && (
+            <span
+              role="img"
+              aria-label="wave"
+              className="inline-block origin-[70%_70%] wave-emoji ml-2 animate-wave"
+              onClick={handleEmojiClick}
+            >
+              👋
+            </span>
+          )}
+        </h1>
+
+        <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto font-light">
+          Aspiring Web Developer | React Specialist | Passionate about creating impactful, scalable solutions
+        </p>
+
+        <a
+          href="#projects"
+          onClick={handleScroll('#projects')}
+          className="inline-flex items-center space-x-3 px-8 py-4 text-white bg-cyan-theme/20 hover:bg-cyan-theme/30 backdrop-blur-sm transition-all duration-300 rounded-full shadow-lg hover:shadow-xl border border-cyan-theme-light/20"
+        >
+          <span className="font-medium">View My Work</span>
+          <FaArrowDown className="w-5 h-5" />
+        </a>
+      </div>
 
       {/* Conditionally render the modal */}
       {/* {isModalVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white transition-all duration-700">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center px-4">
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-sm border border-white/20">
+            <h2 className="text-xl font-semibold mb-4 text-white">
               You Found it yehey😁🫶🥰
             </h2>
-            <p className="text-gray-900 dark:text-white transition-all duration-700">
+            <p className="text-white/90">
               I love you Yaniiii💖❤️💖
             </p>
             <button
               onClick={() => setIsModalVisible(false)}
-              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+              className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300"
             >
               Close
             </button>

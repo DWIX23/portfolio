@@ -44,12 +44,36 @@ export default {
           DEFAULT: '#14b8a6', // teal-500
           'hover': '#0d9488', // teal-600
         },
+        'cyan-theme': {
+          light: '#67e8f9', // cyan-300
+          DEFAULT: '#06b6d4', // cyan-500
+          dark: '#0891b2', // cyan-600
+          'gradient-1': '#22d3ee',
+          'gradient-2': '#0ea5e9',
+          'gradient-3': '#38bdf8',
+          'gradient-4': '#0ea5e9',
+          'gradient-5': '#22d3ee',
+        }
       },
       animation: {
         'gradient-loop': 'gradientLoop 15s linear infinite',
         wave: 'wave 2s ease-in-out infinite',
         fadeIn: 'fadeIn 0.5s ease-in-out forwards',
         fadeOut: 'fadeOut 0.5s ease-in-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+        'float-delayed': 'float 6s ease-in-out 2s infinite',
+        'float-more-delayed': 'float 6s ease-in-out 4s infinite',
+        'spin-slow': 'spin 20s linear infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'water-flow-1': 'waterFlow1 12s linear infinite',
+        'water-flow-2': 'waterFlow2 15s linear infinite',
+        'water-flow-3': 'waterFlow3 18s linear infinite',
+        'water-flow-4': 'waterFlow4 14s linear infinite',
+        'water-flow-5': 'waterFlow5 16s linear infinite',
+        'card-expand': 'cardExpand 0.5s ease-out forwards',
+        'shape-float': 'shapeFloat 8s ease-in-out infinite',
+        'shape-rotate': 'shapeRotate 12s linear infinite',
+        'shape-scale': 'shapeScale 10s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -74,6 +98,68 @@ export default {
             backgroundPosition: '200% 50%',
           },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        waterFlow1: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg) scale(1)' },
+          '25%': { transform: 'translate(100px, -50px) rotate(90deg) scale(1.1)' },
+          '50%': { transform: 'translate(50px, 100px) rotate(180deg) scale(0.9)' },
+          '75%': { transform: 'translate(-50px, -100px) rotate(270deg) scale(1.05)' },
+          '100%': { transform: 'translate(0, 0) rotate(360deg) scale(1)' },
+        },
+        waterFlow2: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg) scale(1)' },
+          '33%': { transform: 'translate(-100px, 50px) rotate(120deg) scale(0.95)' },
+          '66%': { transform: 'translate(80px, -80px) rotate(240deg) scale(1.1)' },
+          '100%': { transform: 'translate(0, 0) rotate(360deg) scale(1)' },
+        },
+        waterFlow3: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg) scale(1)' },
+          '25%': { transform: 'translate(-80px, 40px) rotate(-90deg) scale(1.05)' },
+          '50%': { transform: 'translate(60px, 80px) rotate(-180deg) scale(0.9)' },
+          '75%': { transform: 'translate(80px, -60px) rotate(-270deg) scale(1.1)' },
+          '100%': { transform: 'translate(0, 0) rotate(-360deg) scale(1)' },
+        },
+        waterFlow4: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg) scale(1)' },
+          '33%': { transform: 'translate(90px, 60px) rotate(120deg) scale(1.1)' },
+          '66%': { transform: 'translate(-70px, -70px) rotate(240deg) scale(0.95)' },
+          '100%': { transform: 'translate(0, 0) rotate(360deg) scale(1)' },
+        },
+        waterFlow5: {
+          '0%': { transform: 'translate(0, 0) rotate(0deg) scale(1)' },
+          '25%': { transform: 'translate(-60px, -80px) rotate(90deg) scale(0.9)' },
+          '50%': { transform: 'translate(100px, 40px) rotate(180deg) scale(1.05)' },
+          '75%': { transform: 'translate(-40px, 60px) rotate(270deg) scale(1.1)' },
+          '100%': { transform: 'translate(0, 0) rotate(360deg) scale(1)' },
+        },
+        cardExpand: {
+          '0%': { 
+            transform: 'scale(0.95)',
+            opacity: '0'
+          },
+          '100%': { 
+            transform: 'scale(1)',
+            opacity: '1'
+          },
+        },
+        shapeFloat: {
+          '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+          '50%': { transform: 'translateY(-30px) rotate(180deg)' },
+        },
+        shapeRotate: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        shapeScale: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.2)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
       },
       scrollBehavior: ['smooth', 'responsive'],
     },
