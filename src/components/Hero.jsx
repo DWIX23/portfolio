@@ -8,50 +8,51 @@ function Hero() {
   const [isTypingComplete, setIsTypingComplete] = useState(false); // State to control cursor
   const [shapes, setShapes] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLowEnd, setIsLowEnd] = useState(false);
 
   const cyanGradients = [
     'bg-cyan-theme-gradient-1',
     'bg-cyan-theme-gradient-2',
     'bg-cyan-theme-gradient-3',
-    'bg-cyan-theme-gradient-4',
-    'bg-cyan-theme-gradient-5',
   ];
 
   const waterAnimations = [
     'water-flow-1',
     'water-flow-2',
     'water-flow-3',
-    'water-flow-4',
-    'water-flow-5',
   ];
 
   const waterAnimationsMobile = [
     'water-flow-1-mobile',
     'water-flow-2-mobile',
     'water-flow-3-mobile',
-    'water-flow-4-mobile',
-    'water-flow-5-mobile',
   ];
 
   useEffect(() => {
-    // Check if device is mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    // Check if device is mobile and low-end
+    const checkDevice = () => {
+      const isMobileDevice = window.innerWidth < 768;
+      const isLowEndDevice = navigator.hardwareConcurrency <= 4 || 
+                           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      setIsMobile(isMobileDevice);
+      setIsLowEnd(isLowEndDevice);
     };
 
     // Initial check
-    checkMobile();
+    checkDevice();
 
     // Add resize listener
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkDevice);
 
     // Generate random shapes on component mount
     const generateShapes = () => {
-      const newShapes = Array.from({ length: isMobile ? 12 : 20 }, (_, i) => ({
+      const shapeCount = isLowEnd ? (isMobile ? 4 : 8) : (isMobile ? 8 : 12);
+      const newShapes = Array.from({ length: shapeCount }, (_, i) => ({
         id: i,
         size: isMobile 
-          ? Math.random() * 200 + 100 // 100-300px for mobile
-          : Math.random() * 400 + 200, // 200-600px for desktop
+          ? Math.random() * 150 + 75 // 75-225px for mobile
+          : Math.random() * 300 + 150, // 150-450px for desktop
         top: Math.random() * 100,
         left: Math.random() * 100,
         animation: isMobile
@@ -60,10 +61,12 @@ function Hero() {
         rotation: Math.random() * 360,
         color: cyanGradients[Math.floor(Math.random() * cyanGradients.length)],
         opacity: isMobile
-          ? Math.random() * 0.15 + 0.05 // 0.05-0.2 for mobile
-          : Math.random() * 0.2 + 0.1, // 0.1-0.3 for desktop
-        delay: Math.random() * 5,
-        duration: isMobile ? 15 + Math.random() * 10 : 20 + Math.random() * 15, // Random duration between 15-25s for mobile, 20-35s for desktop
+          ? Math.random() * 0.1 + 0.05 // 0.05-0.15 for mobile
+          : Math.random() * 0.15 + 0.1, // 0.1-0.25 for desktop
+        delay: Math.random() * 3,
+        duration: isLowEnd 
+          ? (isMobile ? 20 + Math.random() * 10 : 25 + Math.random() * 15)
+          : (isMobile ? 15 + Math.random() * 10 : 20 + Math.random() * 15),
       }));
       setShapes(newShapes);
     };
@@ -72,9 +75,9 @@ function Hero() {
 
     // Cleanup
     return () => {
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('resize', checkDevice);
     };
-  }, [isMobile]);
+  }, [isMobile, isLowEnd]);
 
   // Scroll to the projects section when the button is clicked
   const smoothScrollTo = (target, duration = 800, offset = 80) => {
@@ -125,7 +128,7 @@ function Hero() {
         {shapes.map((shape) => (
           <div
             key={shape.id}
-            className={`absolute ${shape.color} rounded-full mix-blend-multiply filter blur-lg animate-${shape.animation}`}
+            className={`absolute ${shape.color} rounded-full mix-blend-multiply filter ${isLowEnd ? 'blur-md' : 'blur-lg'}`}
             style={{
               top: `${shape.top}%`,
               left: `${shape.left}%`,
@@ -140,19 +143,19 @@ function Hero() {
           />
         ))}
         
-        {/* Additional geometric shapes - adjusted for mobile */}
-        <div 
-          className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-96 h-96'} bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`}
-          style={{ animationDuration: '30s' }}
-        />
-        <div 
-          className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-40 h-40' : 'w-80 h-80'} bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`}
-          style={{ animationDuration: '25s' }}
-        />
-        <div 
-          className={`absolute bottom-1/4 left-1/3 ${isMobile ? 'w-36 h-36' : 'w-72 h-72'} bg-cyan-theme-light/30 rounded-full mix-blend-multiply filter blur-xl animate-float`}
-          style={{ animationDuration: '20s' }}
-        />
+        {/* Additional geometric shapes - adjusted for mobile and low-end devices */}
+        {!isLowEnd && (
+          <>
+            <div 
+              className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-36 h-36' : 'w-72 h-72'} bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`}
+              style={{ animationDuration: '30s' }}
+            />
+            <div 
+              className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-32 h-32' : 'w-64 h-64'} bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`}
+              style={{ animationDuration: '25s' }}
+            />
+          </>
+        )}
       </div>
 
       {/* Main content with glassmorphism */}
