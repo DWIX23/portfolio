@@ -103,7 +103,7 @@ function Hero() {
       </a>
 
       {/* Conditionally render the modal */}
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm">
             <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white transition-all duration-700">
@@ -120,7 +120,7 @@ function Hero() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </section>
   );
 }

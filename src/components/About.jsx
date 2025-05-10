@@ -48,7 +48,7 @@ function About() {
           inViewTitle ? animationVisible : animationHidden // Apply animation based on its own inView state
         }`}
       >
-        About Me & Education
+        About Me & My Education
       </h2>
 
       {/* Grid Container for the two columns */}

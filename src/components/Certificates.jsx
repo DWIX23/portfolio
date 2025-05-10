@@ -31,13 +31,13 @@ const certificates = [
     image: cybersecurityImg,
   },
   {
-    title: "Cybersecurity for Business - The fundamental Edition",
+    title: "Cybersecurity for Business - The Fundamental Edition",
     issuer: "EC-Council",
     date: "February 22, 2025",
     image: cyberbusinessImg,
   },
   {
-    title: "Introduction to Dark Web, Anonymity & Cryptocurrency",
+    title: "Introduction to Dark Web, Anonymity, and Cryptocurrency",
     issuer: "EC-Council",
     date: "February 22, 2025",
     image: darkwebImg,
