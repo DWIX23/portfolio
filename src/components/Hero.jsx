@@ -7,6 +7,7 @@ function Hero() {
   const [showEmoji, setShowEmoji] = useState(false); // State to track when to show the emoji
   const [isTypingComplete, setIsTypingComplete] = useState(false); // State to control cursor
   const [shapes, setShapes] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const cyanGradients = [
     'bg-cyan-theme-gradient-1',
@@ -24,21 +25,55 @@ function Hero() {
     'water-flow-5',
   ];
 
+  const waterAnimationsMobile = [
+    'water-flow-1-mobile',
+    'water-flow-2-mobile',
+    'water-flow-3-mobile',
+    'water-flow-4-mobile',
+    'water-flow-5-mobile',
+  ];
+
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+
     // Generate random shapes on component mount
-    const newShapes = Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      size: Math.random() * 400 + 200, // Random size between 200 and 600
-      top: Math.random() * 100, // Random top position
-      left: Math.random() * 100, // Random left position
-      animation: waterAnimations[Math.floor(Math.random() * waterAnimations.length)],
-      rotation: Math.random() * 360, // Random rotation
-      color: cyanGradients[Math.floor(Math.random() * cyanGradients.length)],
-      opacity: Math.random() * 0.2 + 0.1, // Random opacity between 0.1 and 0.3
-      delay: Math.random() * 5, // Random delay for animation start
-    }));
-    setShapes(newShapes);
-  }, []);
+    const generateShapes = () => {
+      const newShapes = Array.from({ length: isMobile ? 12 : 20 }, (_, i) => ({
+        id: i,
+        size: isMobile 
+          ? Math.random() * 200 + 100 // 100-300px for mobile
+          : Math.random() * 400 + 200, // 200-600px for desktop
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        animation: isMobile
+          ? waterAnimationsMobile[Math.floor(Math.random() * waterAnimationsMobile.length)]
+          : waterAnimations[Math.floor(Math.random() * waterAnimations.length)],
+        rotation: Math.random() * 360,
+        color: cyanGradients[Math.floor(Math.random() * cyanGradients.length)],
+        opacity: isMobile
+          ? Math.random() * 0.15 + 0.05 // 0.05-0.2 for mobile
+          : Math.random() * 0.2 + 0.1, // 0.1-0.3 for desktop
+        delay: Math.random() * 5,
+      }));
+      setShapes(newShapes);
+    };
+
+    generateShapes();
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, [isMobile]);
 
   // Scroll to the projects section when the button is clicked
   const smoothScrollTo = (target, duration = 800, offset = 80) => {
@@ -102,15 +137,15 @@ function Hero() {
           />
         ))}
         
-        {/* Additional geometric shapes */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow" />
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-cyan-theme-light/30 rounded-full mix-blend-multiply filter blur-xl animate-float" />
+        {/* Additional geometric shapes - adjusted for mobile */}
+        <div className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-96 h-96'} bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`} />
+        <div className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-40 h-40' : 'w-80 h-80'} bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`} />
+        <div className={`absolute bottom-1/4 left-1/3 ${isMobile ? 'w-36 h-36' : 'w-72 h-72'} bg-cyan-theme-light/30 rounded-full mix-blend-multiply filter blur-xl animate-float`} />
       </div>
 
       {/* Main content with glassmorphism */}
-      <div className="relative z-10 backdrop-blur-sm bg-white/10 rounded-2xl p-8 sm:p-12 shadow-2xl border border-white/20 max-w-4xl mx-4 animate-card-expand">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-wide">
+      <div className="relative z-10 backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-8 md:p-12 shadow-2xl border border-white/20 max-w-4xl mx-4 animate-card-expand">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-wide">
           <TypeAnimation
             sequence={[
               300,
@@ -145,17 +180,17 @@ function Hero() {
           )}
         </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto font-light">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto font-light">
           Aspiring Web Developer | React Specialist | Passionate about creating impactful, scalable solutions
         </p>
 
         <a
           href="#projects"
           onClick={handleScroll('#projects')}
-          className="inline-flex items-center space-x-3 px-8 py-4 text-white bg-cyan-theme/20 hover:bg-cyan-theme/30 backdrop-blur-sm transition-all duration-300 rounded-full shadow-lg hover:shadow-xl border border-cyan-theme-light/20"
+          className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3 sm:py-4 text-white bg-cyan-theme/20 hover:bg-cyan-theme/30 backdrop-blur-sm transition-all duration-300 rounded-full shadow-lg hover:shadow-xl border border-cyan-theme-light/20"
         >
           <span className="font-medium">View My Work</span>
-          <FaArrowDown className="w-5 h-5" />
+          <FaArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
         </a>
       </div>
 
