@@ -100,36 +100,36 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
         },
-        // Simplified desktop animations
+        // Simplified desktop animations with larger movements
         waterFlow1: {
           '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '50%': { transform: 'translate(100px, -50px) rotate(180deg)' },
+          '50%': { transform: 'translate(150px, -75px) rotate(180deg)' },
           '100%': { transform: 'translate(0, 0) rotate(360deg)' },
         },
         waterFlow2: {
           '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '50%': { transform: 'translate(-100px, 50px) rotate(180deg)' },
+          '50%': { transform: 'translate(-150px, 75px) rotate(180deg)' },
           '100%': { transform: 'translate(0, 0) rotate(360deg)' },
         },
         waterFlow3: {
           '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '50%': { transform: 'translate(50px, 100px) rotate(180deg)' },
+          '50%': { transform: 'translate(75px, 150px) rotate(180deg)' },
           '100%': { transform: 'translate(0, 0) rotate(360deg)' },
         },
-        // Simplified mobile animations
+        // Simplified mobile animations with larger movements
         waterFlow1Mobile: {
           '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '50%': { transform: 'translate(50px, -25px) rotate(180deg)' },
+          '50%': { transform: 'translate(75px, -40px) rotate(180deg)' },
           '100%': { transform: 'translate(0, 0) rotate(360deg)' },
         },
         waterFlow2Mobile: {
           '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '50%': { transform: 'translate(-50px, 25px) rotate(180deg)' },
+          '50%': { transform: 'translate(-75px, 40px) rotate(180deg)' },
           '100%': { transform: 'translate(0, 0) rotate(360deg)' },
         },
         waterFlow3Mobile: {
           '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '50%': { transform: 'translate(25px, 50px) rotate(180deg)' },
+          '50%': { transform: 'translate(40px, 75px) rotate(180deg)' },
           '100%': { transform: 'translate(0, 0) rotate(360deg)' },
         },
         cardExpand: {

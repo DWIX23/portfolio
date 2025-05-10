@@ -11,9 +11,9 @@ function Hero() {
   const [isLowEnd, setIsLowEnd] = useState(false);
 
   const cyanGradients = [
-    'bg-cyan-theme-gradient-1',
-    'bg-cyan-theme-gradient-2',
-    'bg-cyan-theme-gradient-3',
+    'bg-cyan-theme-gradient-1/80',
+    'bg-cyan-theme-gradient-2/80',
+    'bg-cyan-theme-gradient-3/80',
   ];
 
   const waterAnimations = [
@@ -47,12 +47,12 @@ function Hero() {
 
     // Generate random shapes on component mount
     const generateShapes = () => {
-      const shapeCount = isLowEnd ? (isMobile ? 4 : 8) : (isMobile ? 8 : 12);
+      const shapeCount = isLowEnd ? (isMobile ? 3 : 6) : (isMobile ? 6 : 9);
       const newShapes = Array.from({ length: shapeCount }, (_, i) => ({
         id: i,
         size: isMobile 
-          ? Math.random() * 150 + 75 // 75-225px for mobile
-          : Math.random() * 300 + 150, // 150-450px for desktop
+          ? Math.random() * 250 + 150 // 150-400px for mobile
+          : Math.random() * 400 + 250, // 250-650px for desktop
         top: Math.random() * 100,
         left: Math.random() * 100,
         animation: isMobile
@@ -61,8 +61,8 @@ function Hero() {
         rotation: Math.random() * 360,
         color: cyanGradients[Math.floor(Math.random() * cyanGradients.length)],
         opacity: isMobile
-          ? Math.random() * 0.1 + 0.05 // 0.05-0.15 for mobile
-          : Math.random() * 0.15 + 0.1, // 0.1-0.25 for desktop
+          ? Math.random() * 0.15 + 0.1 // 0.1-0.25 for mobile
+          : Math.random() * 0.2 + 0.15, // 0.15-0.35 for desktop
         delay: Math.random() * 3,
         duration: isLowEnd 
           ? (isMobile ? 20 + Math.random() * 10 : 25 + Math.random() * 15)
@@ -121,7 +121,7 @@ function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
       {/* Background with cyan gradient and reduced blur effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-theme-light/20 via-cyan-theme/20 to-cyan-theme-dark/20 backdrop-blur-xs" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-theme-light/30 via-cyan-theme/30 to-cyan-theme-dark/30 backdrop-blur-xs" />
       
       {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden">
@@ -147,11 +147,11 @@ function Hero() {
         {!isLowEnd && (
           <>
             <div 
-              className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-36 h-36' : 'w-72 h-72'} bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`}
+              className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-96 h-96'} bg-cyan-theme/40 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`}
               style={{ animationDuration: '30s' }}
             />
             <div 
-              className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-32 h-32' : 'w-64 h-64'} bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`}
+              className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-40 h-40' : 'w-80 h-80'} bg-cyan-theme-dark/40 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`}
               style={{ animationDuration: '25s' }}
             />
           </>
