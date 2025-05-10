@@ -68,7 +68,7 @@ const projects = [
   {
     title: "College of Science Accreditation Website",
     description: "An interactive and user-friendly accreditation platform for the College of Science, enhancing accessibility and information dissemination.",
-    images: [c10Img, c1Img, c2Img, c3Img, c4Img, c5Img, c6Img, c7Img, c8Img, c9Img, c10Img],
+    images: [c1Img, c2Img, c3Img, c4Img, c5Img, c6Img, c7Img, c8Img, c9Img, c10Img],
     link: {
       viewCode: "https://github.com/DWIX23/Darwin.github.io.git",
       liveDemo: "https://dwix23.github.io/Darwin.github.io/",
