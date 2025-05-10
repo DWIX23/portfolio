@@ -63,6 +63,7 @@ function Hero() {
           ? Math.random() * 0.15 + 0.05 // 0.05-0.2 for mobile
           : Math.random() * 0.2 + 0.1, // 0.1-0.3 for desktop
         delay: Math.random() * 5,
+        duration: isMobile ? 15 + Math.random() * 10 : 20 + Math.random() * 15, // Random duration between 15-25s for mobile, 20-35s for desktop
       }));
       setShapes(newShapes);
     };
@@ -120,7 +121,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-theme-light/20 via-cyan-theme/20 to-cyan-theme-dark/20 backdrop-blur-xs" />
       
       {/* Animated background shapes */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {shapes.map((shape) => (
           <div
             key={shape.id}
@@ -133,14 +134,25 @@ function Hero() {
               height: `${shape.size}px`,
               opacity: shape.opacity,
               animationDelay: `${shape.delay}s`,
+              animationDuration: `${shape.duration}s`,
+              willChange: 'transform',
             }}
           />
         ))}
         
         {/* Additional geometric shapes - adjusted for mobile */}
-        <div className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-96 h-96'} bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`} />
-        <div className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-40 h-40' : 'w-80 h-80'} bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`} />
-        <div className={`absolute bottom-1/4 left-1/3 ${isMobile ? 'w-36 h-36' : 'w-72 h-72'} bg-cyan-theme-light/30 rounded-full mix-blend-multiply filter blur-xl animate-float`} />
+        <div 
+          className={`absolute top-1/4 left-1/4 ${isMobile ? 'w-48 h-48' : 'w-96 h-96'} bg-cyan-theme/30 rounded-full mix-blend-multiply filter blur-xl animate-spin-slow`}
+          style={{ animationDuration: '30s' }}
+        />
+        <div 
+          className={`absolute top-1/3 right-1/4 ${isMobile ? 'w-40 h-40' : 'w-80 h-80'} bg-cyan-theme-dark/30 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow`}
+          style={{ animationDuration: '25s' }}
+        />
+        <div 
+          className={`absolute bottom-1/4 left-1/3 ${isMobile ? 'w-36 h-36' : 'w-72 h-72'} bg-cyan-theme-light/30 rounded-full mix-blend-multiply filter blur-xl animate-float`}
+          style={{ animationDuration: '20s' }}
+        />
       </div>
 
       {/* Main content with glassmorphism */}
