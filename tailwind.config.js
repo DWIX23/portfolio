@@ -199,16 +199,47 @@ export default {
       },
       backdropBlur: {
         xs: '2px',
+        sm: '4px',
+        md: '8px',
+        lg: '12px',
+        xl: '16px',
+      },
+      textShadow: {
+        sm: '0 1px 2px rgba(0, 0, 0, 0.3)',
+        DEFAULT: '0 2px 4px rgba(0, 0, 0, 0.3)',
+        lg: '0 4px 8px rgba(0, 0, 0, 0.3)',
+      },
+      dropShadow: {
+        'text-sm': '0 1px 2px rgba(0, 0, 0, 0.3)',
+        'text': '0 2px 4px rgba(0, 0, 0, 0.3)',
+        'text-lg': '0 4px 8px rgba(0, 0, 0, 0.3)',
       },
       scrollBehavior: ['smooth', 'responsive'],
     },
     variants: {
       extend: {
         scrollBehavior: ['smooth', 'responsive'],
+        textShadow: ['responsive'],
+        dropShadow: ['responsive'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow-sm': {
+          'text-shadow': '0 1px 2px rgba(0, 0, 0, 0.3)',
+        },
+        '.text-shadow': {
+          'text-shadow': '0 2px 4px rgba(0, 0, 0, 0.3)',
+        },
+        '.text-shadow-lg': {
+          'text-shadow': '0 4px 8px rgba(0, 0, 0, 0.3)',
+        },
+      }
+      addUtilities(newUtilities)
+    },
+  ],
   corePlugins: {
     scrollBehavior: true,
   }

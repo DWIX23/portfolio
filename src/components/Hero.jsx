@@ -144,8 +144,8 @@ function Hero() {
       </div>
 
       {/* Main content with glassmorphism */}
-      <div className="relative z-10 backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-8 md:p-12 shadow-2xl border border-white/20 max-w-4xl mx-4 animate-card-expand">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-wide">
+      <div className="relative z-10 backdrop-blur-md bg-white/20 rounded-2xl p-4 sm:p-8 md:p-12 shadow-2xl border border-white/30 max-w-4xl mx-4 animate-card-expand transform -translate-y-8">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 tracking-wide drop-shadow-lg">
           <TypeAnimation
             sequence={[
               300,
@@ -180,14 +180,14 @@ function Hero() {
           )}
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto font-light">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 max-w-2xl mx-auto font-light drop-shadow-md">
           Aspiring Web Developer | React Specialist | Passionate about creating impactful, scalable solutions
         </p>
 
         <a
           href="#projects"
           onClick={handleScroll('#projects')}
-          className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3 sm:py-4 text-white bg-cyan-theme/20 hover:bg-cyan-theme/30 backdrop-blur-sm transition-all duration-300 rounded-full shadow-lg hover:shadow-xl border border-cyan-theme-light/20"
+          className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3 sm:py-4 text-white bg-cyan-theme/30 hover:bg-cyan-theme/40 backdrop-blur-sm transition-all duration-300 rounded-full shadow-lg hover:shadow-xl border border-cyan-theme-light/30"
         >
           <span className="font-medium">View My Work</span>
           <FaArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
