@@ -37,7 +37,7 @@ const experienceData = [
     location: "Hybrid (On-site and Remote)",
       responsibilities: [
         "SAP Integrated Business Planning (IBP) for a global client.",
-        "SAP ECC, APO, and CIDS Maintenance and Support for a global client.",
+        "SAP ECC, APO, and CIDS Maintenance and Support.",
         "SAP Bench Sublead",
       ],
   },
