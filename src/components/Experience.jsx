@@ -4,6 +4,17 @@ import ExperienceItem from '../hooks/ExperienceItem';
 // --- Experience Data ---
 const experienceData = [
   {
+    company: "Accenture Philippines",
+    title: "Associate Software Engineer",
+    dates: "July 14, 2025 - Present",
+    location: "Hybrid (On-site and Remote)",
+    responsibilities: [
+      "SAP Integrated Business Planning (IBP) for a global client.",
+      "SAP ECC, APO, and CIDS Maintenance and Support for a global client.",
+      "SAP Bench Sublead",
+    ],
+  },
+  {
     company: "Nexus Cloud IT Solutions",
     title: "Web Developer and Client support Intern",
     dates: "Feb 2025 - Mar 2025",

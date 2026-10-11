@@ -112,7 +112,7 @@ function About() {
             {/* Descriptions */}
             <div className="space-y-4 text-base sm:text-lg leading-relaxed text-gray-100">
               <p>
-                I am pursued a <span className="font-semibold text-white">Bachelor of Science in Computer Science</span>, focusing on software development, database management, and web technologies. graduated on <span className="font-semibold text-white">June 20,2025</span>.
+                I am pursued a <span className="font-semibold text-white">Bachelor of Science in Computer Science</span>, focusing on software development, database management, and web technologies. Graduated on <span className="font-semibold text-white">June 20,2025</span>.
               </p>
               <p>
                 My studies are at the <span className="font-semibold text-white">University of Rizal System - Morong Campus</span>, an institution known for its strong programs in technology and engineering, providing a solid theoretical and practical foundation for my career.
