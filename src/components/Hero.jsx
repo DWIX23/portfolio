@@ -209,25 +209,6 @@ function Hero() {
         </a>
       </div>
 
-      {/* Conditionally render the modal */}
-      {/* {isModalVisible && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center px-4">
-          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-sm border border-white/20">
-            <h2 className="text-xl font-semibold mb-4 text-white">
-              You Found it yehey😁🫶🥰
-            </h2>
-            <p className="text-white/90">
-              I love you Yaniiii💖❤️💖
-            </p>
-            <button
-              onClick={() => setIsModalVisible(false)}
-              className="mt-4 px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )} */}
     </section>
   );
 }
