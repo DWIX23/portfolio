@@ -16,7 +16,7 @@ const getExperienceDuration = (startDate) => {
   const duration = [];
 
   if (years > 0) {
-    duration.push(`${years} ${years === 1 ? 'year' : 'years'}`);
+    duration.push(`${years} ${years === 1 ? 'year &' : 'years &'}`);
   }
 
   if (months > 0) {
