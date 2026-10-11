@@ -1,18 +1,45 @@
 import { useInView } from 'react-intersection-observer';
 import ExperienceItem from '../hooks/ExperienceItem';
 
+// --- Calculate Work Experience ---
+const getExperienceDuration = (startDate) => {
+  const today = new Date();
+
+  let years = today.getFullYear() - startDate.getFullYear();
+  let months = today.getMonth() - startDate.getMonth();
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  const duration = [];
+
+  if (years > 0) {
+    duration.push(`${years} ${years === 1 ? 'year' : 'years'}`);
+  }
+
+  if (months > 0) {
+    duration.push(`${months} ${months === 1 ? 'month' : 'months'}`);
+  }
+
+  return duration.length > 0
+    ? duration.join(' ')
+    : 'Less than a month';
+};
+
 // --- Experience Data ---
 const experienceData = [
   {
     company: "Accenture Philippines",
     title: "Associate Software Engineer",
-    dates: "July 14, 2025 - Present",
+    dates: `July 14, 2025 - Present (${getExperienceDuration(new Date(2025, 6, 14))})`,
     location: "Hybrid (On-site and Remote)",
-    responsibilities: [
-      "SAP Integrated Business Planning (IBP) for a global client.",
-      "SAP ECC, APO, and CIDS Maintenance and Support for a global client.",
-      "SAP Bench Sublead",
-    ],
+      responsibilities: [
+        "SAP Integrated Business Planning (IBP) for a global client.",
+        "SAP ECC, APO, and CIDS Maintenance and Support for a global client.",
+        "SAP Bench Sublead",
+      ],
   },
   {
     company: "Nexus Cloud IT Solutions",
@@ -49,6 +76,55 @@ const experienceData = [
     ],
   },
 ];
+
+// --- Experience Data ---
+// const experienceData = [
+//   {
+//     company: "Accenture Philippines",
+//     title: "Associate Software Engineer",
+//     dates: 'July 14, 2025 - Present (${getExperienceDuration(new Date(2026, 6, 1))})',
+//     location: "Hybrid (On-site and Remote)",
+//     responsibilities: [
+//       "SAP Integrated Business Planning (IBP) for a global client.",
+//       "SAP ECC, APO, and CIDS Maintenance and Support for a global client.",
+//       "SAP Bench Sublead",
+//     ],
+//   },
+//   {
+//     company: "Nexus Cloud IT Solutions",
+//     title: "Web Developer and Client support Intern",
+//     dates: "Feb 2025 - Mar 2025",
+//     location: "On-site",
+//     responsibilities: [
+//       "Enhanced company website functionality using React, Node.js, JavaScript, and MySQL.",
+//       "Developed interactive Information and Enrollment Management System with dynamic forms.",
+//       "Managed database operations, including data retrieval and report generation.",
+//       "Assisted clients with networking tasks and troubleshooting.",
+//     ],
+//   },
+//   {
+//     company: "Department of Labor and Employment | Municipality of Angono",
+//     title: "Encoder and document checker at Department of Interior and Local Government Office (SPES)",
+//     dates: "Apr 2024 - May 2024",
+//     location: "Onsite",
+//     responsibilities: [
+//       "Encoded and verified documents related to Seal of Good Local Governance for Barangay.",
+//       "Visited and inspected barangay premises and collected documents.",
+//       "Assisted barangay secretaries with their reports for Seal of Good Local Governance.",
+//     ],
+//   },
+//   {
+//     company: "Department of Labor and Employment | Municipality of Angono",
+//     title: "Encoder and Customer Helper at Business Permit and Licensing Office (SPES)",
+//     dates: "Apr 2023 - May 2023",
+//     location: "Onsite",
+//     responsibilities: [
+//       "Encoded and verified documents related to applying or renewal of business permits of clients.",
+//       "Assisted clients with business permit applications and renewals process.",
+//       "Routed clients and documents to the appropriate department for further processing.",
+//     ],
+//   },
+// ];
 
 function Experience() {
   // Intersection observer options for the section title
